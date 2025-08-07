@@ -79,7 +79,7 @@ public static void menu() {
         int edad = Integer.parseInt(scanner.nextLine());
         System.out.println("Ingresa el email del estudiante");
         String email = scanner.nextLine();
-        Estudiante estudiante = new Estudiante(nombre,edad,email,0,0,0,"","","");
+        Estudiante estudiante = new Estudiante(nombre,edad,email);
         estudiantes.add(estudiante);
 
     }
@@ -91,6 +91,10 @@ public static void menu() {
     }
     
     public static void RegistrarMaterias(){
+        System.out.println("REGISTRAR MATERIAS");
+        System.out.println("Ingresa nombre de la primer materia");
+        System.out.println("Ingresa de la segunda materia");
+        System.out.println("Ingresa nombre de la terecera materia");
     }
     
     public static void EliminarEstudiante(){
@@ -109,7 +113,9 @@ public static void menu() {
                     encontrado = true;
                     break;
                 
-                }else{
+                }
+                if(!encontrado){
+                    System.out.println("Estudiante no encontrado");
                 
                 }
            

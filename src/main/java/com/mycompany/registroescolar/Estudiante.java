@@ -4,6 +4,9 @@
 
 package com.mycompany.registroescolar;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author MichBalcazar
@@ -14,20 +17,16 @@ public class Estudiante {
 // Métodos: getters y setters, constructor, calcularPromedio()
     
     // un atributo es una variable que define a la clase 
-    
     // creamos 3 atributos 
     private String nombre;
     private int edad;
     private String email;
-    private int calificacion1;
-    private int calificacion2;
-    private int calificacion3;
-    private String materia1;
-     private String materia2;
-      private String materia3;
+    // Semestre → Materia → Calificación
+    private Map<Integer, Map<String, Integer>> notasPorSemestre = new HashMap<>();
+    
     
     public Estudiante(){
-        //NO SON NECESARIAS SOLO PARA INDICAR QUE LOS VALORES SE INICILAIZAN 
+//NO SON NECESARIAS SOLO PARA INDICAR QUE LOS VALORES SE INICILAIZAN 
 //    String nombre = "";
 //    int edad = 0;
 //    String email = "";
@@ -38,21 +37,26 @@ public class Estudiante {
     }
 
     //los constructores nos permite inicializar los valores de los atributos
-    public Estudiante(String nombre, int edad, String email, int calificacion1, int calificacion2, int calificacion3, String materia1, String materia2, String materia3) {
+    public Estudiante(String nombre, int edad, String email) {
         
         this.nombre = nombre;
         this.edad = edad;
         this.email = email;
-        this.calificacion1 = calificacion1;
-        this.calificacion2 = calificacion2;
-        this.calificacion3 = calificacion3;
-        this.materia1 = materia1;
-        this.materia2 = materia2;
-        this.materia3 = materia3;
         
+        //inicializamos cada estudiante en semestre uno usando HashMap
+        Map<String, Integer> materiasVacias = new HashMap<>();
+        notasPorSemestre.put(1, materiasVacias);
     }
 
     //getters obtienen un atributo
+
+    public void setNotasPorSemestre(Map<Integer, Map<String, Integer>> notasPorSemestre) {
+        this.notasPorSemestre = notasPorSemestre;
+    }
+
+    public Map<Integer, Map<String, Integer>> getNotasPorSemestre() {
+        return notasPorSemestre;
+    }
 
     public String getNombre() {
         return nombre;
@@ -77,48 +81,13 @@ public class Estudiante {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public int getCalificacion1() {
-        return calificacion1;
-    }
-
-    public void setCalificacion1(int calificacion1) {
-        this.calificacion1 = calificacion1;
-    }
-
-    public int getCalificacion2() {
-        return calificacion2;
-    }
-
-    public void setCalificacion2(int calificacion2) {
-        this.calificacion2 = calificacion2;
-    }
-
-    public int getCalificacion3() {
-        return calificacion3;
-    }
-
-    public void setCalificacion3(int calificacion3) {
-        this.calificacion3 = calificacion3;
-    }
-    
-    public double CalcularPromedio(){
-        
-        double suma = calificacion1 + calificacion2 + calificacion3;
-        double promedio = suma/3;
-        return promedio;
-        
-    
-    }
     
     @Override
     public String toString(){
         return "nombre: " + nombre + "\n" + 
                 "edad: " + edad +  "\n" + 
-                "email: " +email +  "\n" + 
-                "calificacion1 en " + materia1 + ":"+ calificacion1 +  "\n" +  
-                "calificacion2 en " + materia2 + ":"+ calificacion2 +  "\n" + 
-                "calificacion3 en " + materia3 + ":"+ calificacion3;
+                "email: " +email +  "\n" ;
+
     } 
     
 
