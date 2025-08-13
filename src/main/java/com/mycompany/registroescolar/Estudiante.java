@@ -45,6 +45,7 @@ public class Estudiante {
         
         //inicializamos cada estudiante en semestre uno usando HashMap
         Map<String, Integer> materiasVacias = new HashMap<>();
+        // el estudiante automaticamente se registrara en semestre uno con ninguna materia
         notasPorSemestre.put(1, materiasVacias);
     }
 
